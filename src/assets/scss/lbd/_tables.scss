@@ -1,0 +1,230 @@
+.table {
+
+    .radio,
+    .checkbox {
+        position: relative;
+        height: 20px;
+        display: block;
+        width: 20px;
+        padding: 0px 0px;
+        margin: 0px 5px;
+        text-align: center;
+
+        .icons {
+            left: 5px;
+        }
+    }
+
+    >thead>tr>th,
+    >tbody>tr>th,
+    >tfoot>tr>th,
+    >thead>tr>td,
+    >tbody>tr>td,
+    >tfoot>tr>td {
+        padding: 10px 6px;
+        font-size: small;
+        vertical-align: middle;
+    }
+
+    >thead>tr>th {
+        border-bottom-width: 1px;
+        font-size: $font-size-small;
+        text-transform: uppercase;
+        color: $dark-gray;
+        font-weight: $font-weight-normal;
+        padding-bottom: 5px;
+        border-top: none !important;
+        border-bottom: none;
+        text-align: left !important;
+    }
+
+    .td-actions .btn {
+        @include opacity(0.36);
+
+
+        &.btn-xs {
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+    }
+
+    .td-actions {
+        min-width: 50px;
+    }
+
+    >tbody>tr {
+        position: relative;
+
+        &:hover {
+            .td-actions .btn {
+                @include opacity(1);
+            }
+        }
+    }
+
+    .btn:focus {
+        box-shadow: none !important;
+    }
+}
+
+.table-upgrade {
+    .table {
+        tr {
+            td {
+                width: 100%
+            }
+        }
+    }
+}
+
+.table .form-check .form-check-sign,
+.table .form-check .form-check-sign:after,
+.table .form-check .form-check-sign:before {
+    margin-top: -16px;
+}
+
+.react-pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.react-pagination li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.react-pagination li.active {
+    font-weight: bold;
+    background-color: #ccc;
+}
+
+.react-pagination li a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #212529;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.react-pagination li a:hover {
+    background-color: #ccc;
+}
+
+.scrollable-table {
+    overflow-y: auto;
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+
+// Full Calendar 
+.fc {
+    font-size: small;
+
+    &-toolbar {
+        padding: 10px;
+    }
+
+    &-daygrid-event {
+        white-space: inherit;
+        font-size: x-small;
+        cursor: pointer;
+        padding: 2px;
+
+        &.-block-event {
+            .fc-event-title {
+                padding: 2px;
+            }
+        }
+    }
+
+    &-col-header-cell-cushion,
+    &-col-header-cell-cushion:hover {
+        color: #212529;
+        text-transform: uppercase;
+    }
+
+    & .fc-daygrid-day-number,
+    & .fc-daygrid-day-number:hover {
+        color: #212529;
+    }
+
+    .fc-daygrid-day-top {
+        flex-direction: inherit;
+    }
+
+    &-timeline-event {
+        border-radius: 3px;
+
+        .fc-event-title {
+            white-space: inherit;
+            font-size: x-small;
+            cursor: pointer;
+
+            &.-timeline-event {
+                .fc-event-title {
+                    white-space: inherit;
+                    font-size: x-small;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    &-timeline-slot-cushion,
+    &-timeline-slot-cushion:hover {
+        color: #212529;
+        text-transform: uppercase;
+    }
+
+    .fc-button-group {
+
+        .fc-today-button,
+        .fc-button.fc-button-primary {
+            font-size: 12px;
+            padding: 8px 12px;
+            text-transform: uppercase;
+        }
+    }
+
+    .fc-today-button,
+    .fc-button.fc-button-primary {
+        text-transform: uppercase;
+    }
+
+    .fc-daygrid-day-frame {
+        cursor: pointer;
+        position: relative;
+
+        &:hover::before {
+            content: "";
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            transform: translate(50%, -50%);
+            width: 22px;
+            height: 22px;
+            background-color: #eaeaea;
+            border-radius: 50%;
+        }
+
+        &:hover::after {
+            content: "+";
+            font-family: "Font Awesome";
+            position: absolute;
+            top: 15px;
+            right: 14px;
+            transform: translate(50%, -50%);
+            font-size: 16px;
+            font-weight: 600;
+            color: #212529;
+        }
+    }
+
+    .fc-view-harness {
+        z-index: 0;
+    }
+
+}
