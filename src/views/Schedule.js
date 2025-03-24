@@ -210,7 +210,7 @@ function Schedule() {
                   }}
                   customButtons={{
                     sendNotifications: {
-                      text: "Send Notification",
+                      text: "Publish",
                       click: () => {
                         handleSendNotification();
                       },
