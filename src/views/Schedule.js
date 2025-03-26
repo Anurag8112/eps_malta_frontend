@@ -154,11 +154,14 @@ function Schedule() {
       end = moment(view.activeEnd).subtract(1, "day").format("YYYY-MM-DD");
     }
 
+    const selectedLocationIds = selectedLocation.map((loc) => loc.value);
+
     try {
       await axios.post("timesheet/notifications/send", {
         startDate: start,
         endDate: end,
         type: viewType,
+        locationIds: selectedLocationIds,
       });
       toast.success("Notifications sent successfully!");
     } catch (error) {
