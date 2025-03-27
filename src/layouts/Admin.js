@@ -29,6 +29,7 @@ import Skills from "views/Skills.js";
 import Qualifications from "views/Qualifications.js";
 import Languages from "views/Languages.js";
 import Roster from "views/Roster.js";
+import Message from "views/Message.js";
 function Admin() {
   const [image, setImage] = React.useState(sidebarImage);
   const [color, setColor] = React.useState("black");
@@ -90,6 +91,7 @@ function Admin() {
               ></Route>
               <Route path="/timesheet/log" element={<TimeSheetLog />}></Route>
               <Route path="/schedule" element={<Schedule />}></Route>
+              <Route path="/messages" element={<Message />}></Route>
               <Route
                 path="/change-password"
                 element={<ChangePassword />}

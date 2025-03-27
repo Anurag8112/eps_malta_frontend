@@ -29,6 +29,7 @@ import Skills from "views/Skills.js";
 import Qualifications from "views/Qualifications.js";
 import Languages from "views/Languages.js";
 import Roster from "views/Roster.js";
+import Message from "views/Message.js";
 
 function Manager() {
   const [image, setImage] = React.useState(sidebarImage);
@@ -85,6 +86,7 @@ function Manager() {
               ></Route>
               <Route path="/timesheet/log" element={<TimeSheetLog />}></Route>
               <Route path="/schedule" element={<Schedule />}></Route>
+              <Route path="/messages" element={<Message />}></Route>
               <Route path="/skills" element={<Skills />}></Route>
               <Route
                 path="/qualifications"

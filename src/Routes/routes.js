@@ -19,6 +19,7 @@ import Skills from "views/Skills";
 import Qualifications from "views/Qualifications";
 import Languages from "views/Languages";
 import Roster from "views/Roster";
+import Message from "views/Message";
 
 const dashboardRoutes = [
   {
@@ -164,6 +165,13 @@ const dashboardRoutes = [
     name: "Schedule",
     icon: "nc-icon nc-grid-45",
     component: Schedule,
+    layout: "/admin",
+  },
+  {
+    path: "/messages",
+    name: "Messages",
+    icon: "nc-icon nc-email-85",
+    component: Message,
     layout: "/admin",
   },
 ];

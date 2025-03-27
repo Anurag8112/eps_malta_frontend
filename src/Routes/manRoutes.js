@@ -19,6 +19,7 @@ import Skills from "views/Skills";
 import Qualifications from "views/TimesheetLog";
 import Languages from "views/Languages";
 import Roster from "views/Roster";
+import Message from "views/Message";
 
 const dashboardRoutes = [
   {
@@ -166,6 +167,13 @@ const dashboardRoutes = [
     component: Schedule,
     layout: "/manager",
   },
+  {
+      path: "/messages",
+      name: "Messages",
+      icon: "nc-icon nc-email-85",
+      component: Message,
+      layout: "/manager",
+    },
 ];
 
 export default dashboardRoutes;
