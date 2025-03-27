@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Card, Container, Row, Col, Spinner, Modal, Button } from "react-bootstrap";
 import axios from "axios";
 import BootstrapTable from "react-bootstrap-table-next";
@@ -12,6 +12,7 @@ function Message() {
     const [messages, setMessages] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [modalLoading, setModalLoading] = useState(false);
+    const scrollRef = useRef(null); // 👈 Added
 
     const fetchConversations = async () => {
         try {
@@ -47,6 +48,13 @@ function Message() {
             setModalLoading(false);
         }
     };
+
+    // ✅ Scroll to bottom when messages load
+    useEffect(() => {
+        if (showModal && !modalLoading && scrollRef.current) {
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
+    }, [messages, modalLoading, showModal]);
 
     const columns = [
         {
@@ -106,108 +114,6 @@ function Message() {
             ),
         },
     ];
-
-    // return (
-    //     <>
-    //         <Container fluid>
-    //             <Row>
-    //                 <Col md={12}>
-    //                     <Card className="stripped-table-with-hover">
-    //                         <Card.Header className="d-flex justify-content-between align-items-center">
-    //                             <div>
-    //                                 <Card.Title as="h4">Employee Conversations</Card.Title>
-    //                                 <p className="card-category">Show All Conversations</p>
-    //                             </div>
-    //                         </Card.Header>
-    //                         <Card.Body className="table-full-width table-responsive px-0">
-    //                             {isLoading ? (
-    //                                 <div style={{ textAlign: "center" }}>
-    //                                     <Spinner animation="border" role="status" />
-    //                                 </div>
-    //                             ) : (
-    //                                 <BootstrapTable
-    //                                     keyField="conversation_id"
-    //                                     data={conversations}
-    //                                     columns={columns}
-    //                                     pagination={paginationFactory()}
-    //                                     noDataIndication="No Data Found"
-    //                                     striped
-    //                                     hover
-    //                                 />
-    //                             )}
-    //                         </Card.Body>
-    //                     </Card>
-    //                 </Col>
-    //             </Row>
-    //         </Container>
-
-    //         {/* Modal for Messages */}
-    //         <Modal show={showModal} onHide={() => setShowModal(false)} centered size="lg">
-    //             <Modal.Header>
-    //                 <Modal.Title>Messages</Modal.Title>
-    //             </Modal.Header>
-    //             <Modal.Body style={{ maxHeight: "400px", overflowY: "auto", backgroundColor: "#f5f5f5", padding: "10px" }}>
-    //                 {modalLoading ? (
-    //                     <div style={{ textAlign: "center" }}>
-    //                         <Spinner animation="border" role="status" />
-    //                     </div>
-    //                 ) : messages.length > 0 ? (
-    //                     <div>
-    //                         {messages.map((msg, index) => {
-    //                             const isOwnMessage = msg.sender_id === 240;
-    //                             return (
-    //                                 <div
-    //                                     key={index}
-    //                                     style={{
-    //                                         display: "flex",
-    //                                         flexDirection: "column",
-    //                                         alignItems: isOwnMessage ? "flex-end" : "flex-start",
-    //                                         marginBottom: "15px",
-    //                                     }}
-    //                                 >
-    //                                     <div
-    //                                         style={{
-    //                                             background: isOwnMessage ? "#007bff" : "#e0e0e0",
-    //                                             color: isOwnMessage ? "#fff" : "#000",
-    //                                             padding: "10px 15px",
-    //                                             borderRadius: "20px",
-    //                                             maxWidth: "80%", // increased width
-    //                                             wordWrap: "break-word",
-    //                                         }}
-    //                                     >
-    //                                         {msg.message}
-    //                                     </div>
-    //                                     <div
-    //                                         style={{
-    //                                             fontSize: "10px",
-    //                                             marginTop: "5px",
-    //                                             color: "#555",
-    //                                             marginRight: isOwnMessage ? "10px" : "0",
-    //                                             marginLeft: isOwnMessage ? "0" : "10px",
-    //                                         }}
-    //                                     >
-    //                                         {new Date(msg.created_at).toLocaleTimeString()}
-    //                                     </div>
-    //                                 </div>
-    //                             );
-    //                         })}
-    //                     </div>
-    //                 ) : (
-    //                     <p>No messages found.</p>
-    //                 )}
-    //             </Modal.Body>
-
-    //             <Modal.Footer>
-    //                 <Button variant="secondary" onClick={() => setShowModal(false)}>
-    //                     Close
-    //                 </Button>
-    //             </Modal.Footer>
-    //         </Modal>
-
-    //         <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
-    //     </>
-    // );
-
     return (
         <>
             <Container fluid>
@@ -217,7 +123,6 @@ function Message() {
                             <Card.Header className="d-flex justify-content-between align-items-center">
                                 <div>
                                     <Card.Title as="h4">Employee Conversations</Card.Title>
-                                    <p className="card-category">Show All Conversations</p>
                                 </div>
                             </Card.Header>
                             <Card.Body className="table-full-width table-responsive px-0">
@@ -241,13 +146,14 @@ function Message() {
                     </Col>
                 </Row>
             </Container>
-    
+
             {/* Modal for Messages */}
             <Modal show={showModal} onHide={() => setShowModal(false)} centered size="lg">
                 <Modal.Header>
                     <Modal.Title>Messages</Modal.Title>
                 </Modal.Header>
                 <Modal.Body
+                    ref={scrollRef}
                     style={{
                         maxHeight: "400px",
                         overflowY: "auto",
@@ -310,11 +216,10 @@ function Message() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-    
+
             <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
         </>
     );
-    
 }
 
 export default Message;
