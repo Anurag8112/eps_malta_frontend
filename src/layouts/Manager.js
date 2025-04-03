@@ -88,6 +88,8 @@ function Manager() {
               <Route path="/schedule" element={<Schedule />}></Route>
               <Route path="/messages" element={<Message />}></Route>
               <Route path="/skills" element={<Skills />}></Route>
+              <Route path="/newsfeeds" element={<Message />}></Route>
+              <Route path="/announcements" element={<Message />}></Route>
               <Route
                 path="/qualifications"
                 element={<Qualifications />}

@@ -1,7 +1,6 @@
 import EmployeeReport from "views/EmployeeReport.js";
 import TimeSheet from "views/TimeSheet";
 import Schedule from "views/Schedule";
-import Message from "views/Message";
 
 const dashboardRoutes = [
   {
@@ -24,7 +23,7 @@ const dashboardRoutes = [
     icon: "nc-icon nc-grid-45",
     component: Schedule,
     layout: "/employee",
-  }
+  },
 ];
 
 export default dashboardRoutes;

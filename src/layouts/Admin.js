@@ -30,6 +30,9 @@ import Qualifications from "views/Qualifications.js";
 import Languages from "views/Languages.js";
 import Roster from "views/Roster.js";
 import Message from "views/Message.js";
+import Announcements from "views/Announcements.js";
+import Newsfeed from "views/Newsfeed.js";
+
 function Admin() {
   const [image, setImage] = React.useState(sidebarImage);
   const [color, setColor] = React.useState("black");
@@ -92,6 +95,8 @@ function Admin() {
               <Route path="/timesheet/log" element={<TimeSheetLog />}></Route>
               <Route path="/schedule" element={<Schedule />}></Route>
               <Route path="/messages" element={<Message />}></Route>
+              <Route path="/newsfeeds" element={<Newsfeed/>}></Route>
+              <Route path="/announcements" element={<Announcements/>}></Route>
               <Route
                 path="/change-password"
                 element={<ChangePassword />}

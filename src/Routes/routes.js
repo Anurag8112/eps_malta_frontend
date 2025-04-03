@@ -20,6 +20,8 @@ import Qualifications from "views/Qualifications";
 import Languages from "views/Languages";
 import Roster from "views/Roster";
 import Message from "views/Message";
+import Newsfeeds from "views/Newsfeed";
+import Announcements from "views/Announcements";
 
 const dashboardRoutes = [
   {
@@ -174,6 +176,21 @@ const dashboardRoutes = [
     component: Message,
     layout: "/admin",
   },
+  {
+    path: "/newsfeeds",
+    name: "News Feeds",
+    icon: "nc-icon nc-align-left-2", // Updated icon
+    component: Newsfeeds,
+    layout: "/admin",
+  },
+  {
+    path: "/announcements",
+    name: "Announcements",
+    icon: "nc-icon nc-bell-55", // Updated icon
+    component: Announcements,
+    layout: "/admin",
+  },
+  
 ];
 
 export default dashboardRoutes;
